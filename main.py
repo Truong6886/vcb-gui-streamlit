@@ -156,11 +156,11 @@ def main():
             plot_open_close_high_low(df)
     elif  forecast_button and not load_data_flag and not missing_flag and not corr_flag :
         if forecast_button == "Linear Regression" : 
-            X_final, X_train, X_test, X_val, y_final, y_train, y_test, y_val=load_regression_files()
+            X_Ori, X_final, X_train, X_test, X_val, y_final, y_train, y_test, y_val=load_regression_files()
             perform_linear_regression(X_train, y_train, X_test, y_test, X_val, y_val, X_final, y_final, df_dummy)
 
         if forecast_button == "Lasso Regression":
-            X_final, X_train, X_test, X_val, y_final, y_train, y_test, y_val=load_regression_files()
+            X_Ori, X_final, X_train, X_test, X_val, y_final, y_train, y_test, y_val=load_regression_files()
             perform_lasso_regression(X_train, y_train, X_test, y_test, X_val, y_val, X_final, y_final, df_dummy)
 
     
