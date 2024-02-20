@@ -1,6 +1,6 @@
 from library import *
 from process_data import *
-
+import plotly.subplots as ps
 
 
 st.markdown(
@@ -190,17 +190,33 @@ def catvolume_chart(df, category_column):
     df_pie = pd.DataFrame(category_percentages).reset_index()
     df_pie.columns = [category_column, 'Percentage']
 
-    # Plot Pie Chart
+    # Create Pie Chart
     fig_pie = px.pie(df_pie, names=category_column, values='Percentage',
                      title='Pie Chart of ' + category_column, hole=0.3, color_discrete_sequence=px.colors.sequential.Viridis)
 
-    # Plot Bar Chart
+    # Create Bar Chart
     fig_bar = px.bar(df, x=category_column, color_discrete_sequence=px.colors.sequential.Viridis,
                      title='Bar Chart of ' + category_column, labels={'x': category_column, 'count': 'Count'})
 
-    # Show Plots Side by Side
-    st.plotly_chart(fig_pie)
-    st.plotly_chart(fig_bar)
+    # Create Subplots
+    fig = ps.make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'bar'}]], subplot_titles=('Pie Chart', 'Bar Chart'), horizontal_spacing=0.1)
+    
+    # Add Pie Chart to subplot
+    fig.add_trace(fig_pie['data'][0], row=1, col=1)
+    
+    # Add Bar Chart to subplot
+    for trace in fig_bar['data']:
+        fig.add_trace(trace, row=1, col=2)
+
+    # Update layout
+    fig.update_layout(title_text=f'Pie and Bar Chart of {category_column}', width=900)
+
+    # Update legend
+    fig.update_traces(showlegend=True, selector=dict(type='bar'), name='Bar Chart')
+    fig.update_traces(showlegend=True, selector=dict(type='pie'), name='Pie Chart')
+
+    # Show Subplots
+    st.plotly_chart(fig)
 
 @st.cache_data
 def plot_correlation_matrix(df):
