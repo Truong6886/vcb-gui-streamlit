@@ -25,7 +25,7 @@ def preprocess_data(df):
     
     df_dummy = df.copy()
     #  Ánh xạ giá trị số thành các chuỗi có ý nghĩa
-    days = {0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'}
+    days = {1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday'}
     df_dummy['Day'] = df_dummy['Day'].map(days)
     months = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
     df_dummy['Month'] = df_dummy['Month'].map(months)
@@ -84,7 +84,7 @@ def preprocess_dataframe(df):
         'Tuesday': 2,
         'Wednesday': 3,
         'Thursday': 4,
-        'Sunday': 5
+        'Friday': 5,
     }
     df_filtered['Day'] = df_filtered['Day'].map(weekday_mapping)
 
