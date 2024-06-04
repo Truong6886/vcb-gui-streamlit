@@ -8,7 +8,7 @@ import yfinance as yf
 def load_data():
     ticker_symbol = "VCB.VN"
     start_date ="2009-06-30"
-    end_date ="2023-12-31"
+    end_date ="2024-06-04"
     df= yf.download(ticker_symbol,start=start_date,end=end_date)
     return df
 
@@ -25,7 +25,7 @@ def preprocess_data(df):
     
     df_dummy = df.copy()
     #  Ánh xạ giá trị số thành các chuỗi có ý nghĩa
-    days = {1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday'}
+    days = {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday'}
     df_dummy['Day'] = df_dummy['Day'].map(days)
     months = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
     df_dummy['Month'] = df_dummy['Month'].map(months)
@@ -80,11 +80,11 @@ def preprocess_dataframe(df):
 
     # Map weekdays to numbers
     weekday_mapping = {
-        'Monday': 1,
-        'Tuesday': 2,
-        'Wednesday': 3,
-        'Thursday': 4,
-        'Friday': 5,
+        'Monday': 0,
+        'Tuesday': 1,
+        'Wednesday': 2,
+        'Thursday': 3,
+        'Friday': 4,
     }
     df_filtered['Day'] = df_filtered['Day'].map(weekday_mapping)
 
