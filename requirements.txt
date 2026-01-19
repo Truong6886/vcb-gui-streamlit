@@ -7,6 +7,7 @@ attrs==23.2.0
 beautifulsoup4==4.12.3
 blinker==1.7.0
 bs4==0.0.2
+vnstock==0.2.9.0
 cachetools==5.3.3
 catboost==1.2.5
 certifi==2024.2.2
@@ -155,4 +156,5 @@ wsproto==1.2.0
 xgboost==2.0.3
 yfinance==0.2.38
 zipp==3.18.1
+
 
