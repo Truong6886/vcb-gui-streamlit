@@ -12,6 +12,7 @@ catboost==1.2.5
 certifi==2024.2.2
 cffi==1.16.0
 charset-normalizer==3.3.2
+imbalanced-learn==0.12.2
 cinemagoer==2023.5.1
 click==8.1.7
 colorama==0.4.6
@@ -154,3 +155,4 @@ wsproto==1.2.0
 xgboost==2.0.3
 yfinance==0.2.38
 zipp==3.18.1
+
