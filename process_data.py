@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import yfinance as yf
-
+from vnstock import stock_historical_data
 @st.cache_data
 def load_data():
     df = stock_historical_data(
