@@ -6,11 +6,18 @@ import yfinance as yf
 
 @st.cache_data
 def load_data():
-    ticker_symbol = "VCB.VN"
-    start_date ="2009-06-30"
-    end_date ="2024-06-04"
-    df= yf.download(ticker_symbol,start=start_date,end=end_date)
+    ticker_symbol = "VCB.VI"   # hoặc "VCB"
+    start_date = "2009-06-30"
+    end_date = "2024-06-04"
+
+    df = yf.download(ticker_symbol, start=start_date, end=end_date)
+
+    if df.empty:
+        st.error("❌ Không tải được dữ liệu cổ phiếu VCB.")
+        st.stop()
+
     return df
+
 
 
 
