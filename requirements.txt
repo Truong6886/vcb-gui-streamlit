@@ -7,7 +7,7 @@ PyJWT==2.8.0
 cryptography==42.0.5
 python-dotenv==1.0.0
 rich==13.7.0
-
+imbalanced-learn==0.12.2
 # Data processing & visualization
 numpy==1.26.3
 altair==5.2.0
@@ -20,3 +20,4 @@ lxml==5.1.0
 # Optional utilities
 flask==3.0.0
 python-dateutil==2.8.2
+
